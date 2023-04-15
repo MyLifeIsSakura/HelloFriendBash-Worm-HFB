@@ -20,7 +20,7 @@ Extras:
  
 Means of spreading:
 
- Spreads automatically to wifi connected devices.
+ Spreads automatically to network connected devices.
  
  Sends out emails.
  
