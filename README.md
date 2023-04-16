@@ -1,5 +1,5 @@
 # HelloFriendBash
-Dangerous worm that infects computers in you network. Part 1: https://github.com/MyLifeIsSakura/HelloFriendWorm-HFW-2.0
+Dangerous worm that infects computers in your network. Part 1: https://github.com/MyLifeIsSakura/HelloFriendWorm-HFW-2.0
 This is part 2 of HelloFriend Worm/HFW, HFW part one was in vbs and was a dangerous email worm that spread via autlook by sending itself to contacts,
 but people learn, they dont open random files in suspicius emails anymore, so this is the new HelloFriend, a new generation! it doesnt use email anymore it
 uses network connections! i'll explain.
